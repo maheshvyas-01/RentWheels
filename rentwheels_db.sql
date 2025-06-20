@@ -18,7 +18,7 @@ CREATE TABLE Users (
 ---admin---
 UPDATE Users 
 SET is_admin = 1 
-WHERE email = 'mahesh@outlook.com';
+WHERE email = 'abcde@gmail.com';
 
 UPDATE Users 
 SET phone = '1112223330'  
