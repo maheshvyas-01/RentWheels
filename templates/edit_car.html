@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Car{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Edit Car</h2>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card p-4 shadow-lg mx-auto" style="max-width: 600px;">
+        <form method="POST" action="{{ url_for('edit_car', car_id=car.car_id) }}">
+            <div class="mb-3">
+                <label for="car_name" class="form-label">Car Name</label>
+                <input type="text" class="form-control" id="car_name" name="car_name" value="{{ car.car_name }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="brand" class="form-label">Brand</label>
+                <input type="text" class="form-control" id="brand" name="brand" value="{{ car.brand }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="model" class="form-label">Model</label>
+                <input type="text" class="form-control" id="model" name="model" value="{{ car.model }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="year" class="form-label">Year</label>
+                <input type="number" class="form-control" id="year" name="year" value="{{ car.year }}" required min="2000" max="2025">
+            </div>
+
+            <div class="mb-3">
+                <label for="price_per_day" class="form-label">Price per Day (₹)</label>
+                <input type="number" class="form-control" id="price_per_day" name="price_per_day" value="{{ car.price_per_day }}" required min="100">
+            </div>
+
+            <div class="mb-4"> <!-- Added bottom margin to push buttons down -->
+                <label for="image_url" class="form-label">Image URL</label>
+                <input type="text" class="form-control" id="image_url" name="image_url" value="{{ car.image_url }}" required>
+            </div>
+
+            <!-- Button Group with better spacing -->
+            <div class="d-flex flex-column gap-2">
+                <button type="submit" class="btn btn-success">
+                   <i class="fas fa-save"></i> Save Changes
+                </button>
+                <a href="{{ url_for('manage_cars') }}" class="btn btn-success edit-cancel-btn">
+                  <i class="fas fa-times"></i> Cancel
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

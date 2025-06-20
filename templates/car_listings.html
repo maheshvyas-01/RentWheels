@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Car Listings{% endblock %}
+
+{% block content %}
+<section class="car-listings-section">
+    <h1 class="section-title">Available Cars for Rent</h1>
+
+    <div class="car-listings-container">
+        {% for car in cars %}
+        <div class="car-card">
+            <img src="{{ url_for('static', filename='images/cars/' + car.image_url) }}" alt="{{ car.name }}" class="car-image">
+            <h2>{{ car.name }}</h2>
+            <p><strong>Brand:</strong> {{ car.brand }}</p>
+            <p><strong>Model:</strong> {{ car.model }}</p>
+            <p><strong>Year:</strong> {{ car.year }}</p>
+            <p class="price">₹{{ "%.2f"|format(car.price_per_day) }}/day</p>
+            <div class="car-card-buttons">
+                <a href="#" class="btn details-btn">View Details</a>
+                <a href="{{ url_for('book_car', car_id=car.car_id) }}" class="btn book-btn">Book Now</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

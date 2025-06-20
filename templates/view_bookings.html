@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}View Bookings - RentWheels{% endblock %}
+{% block content %}
+
+<div class="admin-container">
+    <h1>All Bookings & Payments</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="table-container">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>User</th>
+                    <th>Car</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Booking Status</th>
+                    <th>Booking Date</th>
+                    <th>Payment Status</th>
+                    <th>Amount (₹)</th>
+                    <th>Tax (₹)</th>
+                    <th>Total (₹)</th>
+                    <th>Payment Date</th>
+                    <th>Update Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr class="text-center">
+                        <td>{{ booking.booking_id }}</td>
+                        <td>{{ booking.user_name }}</td>
+                        <td>{{ booking.car_name }}</td>
+                        <td>{{ booking.start_date }}</td>
+                        <td>{{ booking.end_date }}</td>
+                        <td>
+                            <span class="badge bg-{% if booking.booking_status == 'Confirmed' %}success{% elif booking.booking_status == 'Cancelled' %}danger{% else %}warning{% endif %}">
+                                {{ booking.booking_status }}
+                            </span>
+                        </td>
+                        <td>{{ booking.booking_created_at.strftime('%Y-%m-%d') }}</td>
+                        <td>
+                            <span class="badge bg-{% if booking.payment_status == 'Paid' %}success{% elif booking.payment_status == 'Failed' %}danger{% else %}secondary{% endif %}">
+                                {{ booking.payment_status }}
+                            </span>
+                        </td>
+                        <td>{{ booking.amount or '-' }}</td>
+                        <td>{{ booking.tax or '-' }}</td>
+                        <td>{{ booking.total_amount or '-' }}</td>
+                        <td>
+                            {% if booking.payment_created_at %}
+                                {{ booking.payment_created_at.strftime('%Y-%m-%d') }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if booking.booking_status == 'Pending' %}
+                            <form action="{{ url_for('view_bookings') }}" method="POST" class="booking-status-btns">
+                                <input type="hidden" name="booking_id" value="{{ booking.booking_id }}">
+                                <button type="submit" name="status" value="Confirmed" class="action-btn edit-btn" onclick="return confirm('Approve this booking?')">
+                                    <i class="bi bi-check-circle"></i> Approve
+                                </button>
+                                <button type="submit" name="status" value="Cancelled" class="action-btn delete-btn" onclick="return confirm('Decline this booking?')">
+                                    <i class="bi bi-x-circle"></i> Decline
+                                </button>
+                            </form>
+                            {% else %}
+                                <span class="text-muted">Already {{ booking.booking_status }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13" class="text-center">No bookings found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('admin_panel') }}" class="back-btn">
+            <i class="bi bi-arrow-left"></i> Back to Admin Panel
+        </a>
+    </div>
+</div>
+
+{% endblock %}

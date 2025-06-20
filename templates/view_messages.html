@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}View Messages - RentWheels{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>View Messages</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="table-container">
+        <table class="admin-table">
+            <thead>
+                <tr class="text-center">
+                    <th>Message ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Received On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+                    <tr class="text-center">
+                        <td>{{ message.message_id }}</td>
+                        <td>{{ message.name }}</td>
+                        <td>{{ message.email }}</td>
+                        <td>{{ message.message_content }}</td>
+                        <td>{{ message.created_at }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">No messages found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('admin_panel') }}" class="back-btn">
+            <i class="bi bi-arrow-left"></i> Back to Admin Panel
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Success - RentWheels{% endblock %}
+
+{% block content %}
+<div class="payment-success-container">
+    <div class="success-message">
+        <h2>✅ <span class="success-text">Payment Successful!</span></h2>
+        <p>Your booking has been confirmed. Thank you for choosing RentWheels!</p>
+        <p><strong>Booking ID:</strong> {{ booking_id }}</p>
+    </div>
+
+    <!-- Big Invoice Download Button -->
+    <a href="{{ url_for('download_invoice', booking_id=booking_id) }}" class="invoice-btn">
+        Download Invoice (PDF)
+    </a>
+
+    <!-- Other Buttons Below -->
+    <div class="action-buttons">
+        <a href="{{ url_for('my_bookings') }}" class="btn-secondary">My Bookings</a>
+        <a href="{{ url_for('home') }}" class="btn-primary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Car{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Add New Car</h2>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card p-4 shadow-lg mx-auto" style="max-width: 600px;">
+        <form method="POST" action="{{ url_for('add_car') }}" onsubmit="return validateForm()">
+            <div class="mb-3">
+                <label for="car_name" class="form-label">Car Name</label>
+                <input type="text" class="form-control" id="car_name" name="car_name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="brand" class="form-label">Brand</label>
+                <input type="text" class="form-control" id="brand" name="brand" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="model" class="form-label">Model</label>
+                <input type="text" class="form-control" id="model" name="model" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="year" class="form-label">Year</label>
+                <input type="number" class="form-control" id="year" name="year" required min="2000" max="2025">
+            </div>
+
+            <div class="mb-3">
+                <label for="price_per_day" class="form-label">Price per Day (₹)</label>
+                <input type="number" class="form-control" id="price_per_day" name="price_per_day" required min="100">
+            </div>
+
+            <div class="mb-3">
+                <label for="image_url" class="form-label">Image URL</label>
+                <input type="text" class="form-control" id="image_url" name="image_url" placeholder="Paste image link here" required>
+                <small class="text-muted">Ensure the image URL is valid and publicly accessible.</small>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Car
+                </button>
+                <a href="{{ url_for('manage_cars') }}" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript for Basic Form Validation -->
+<script>
+    function validateForm() {
+        var imageUrl = document.getElementById("image_url").value;
+        if (!imageUrl.startsWith("http://") && !imageUrl.startsWith("https://")) {
+            alert("Please enter a valid image URL (must start with http:// or https://)");
+            return false;
+        }
+        return true;
+    }
+</script>
+{% endblock %}

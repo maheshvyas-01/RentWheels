@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<section class="about-section">
+    <div class="about-container">
+        <h1 class="section-title">About RentWheels</h1>
+        <p class="about-intro">At <b>RentWheels</b>, we are dedicated to providing top-quality car rental services with a seamless and hassle-free experience. Whether it's a weekend getaway, a business trip, or a long journey, we ensure you get the perfect ride at the best price.</p>
+
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Why Choose RentWheels?</h2>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check"></i> **Diverse Fleet** – Choose from economy to luxury cars</li>
+                    <li><i class="fa-solid fa-check"></i> **Affordable Pricing** – No hidden charges, full transparency</li>
+                    <li><i class="fa-solid fa-check"></i> **Easy Booking** – User-friendly platform with quick reservations</li>
+                    <li><i class="fa-solid fa-check"></i> **Reliable Service** – 24/7 customer support & roadside assistance</li>
+                </ul>
+            
+
+            <div class="mission-section"> 
+                <h2 class="mission-title">Our Mission</h2>
+                <p>At <b>RentWheels</b>, we aim to provide <strong>affordable, reliable, and convenient car rentals</strong> with exceptional service and well-maintained vehicles to ensure a seamless travel experience for all.</p>
+            </div>
+                
+        <div class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-container">
+                <div class="team-card">
+                    <img src="{{ url_for('static', filename='images/team1.jpg') }}" alt="Founder">
+                    <h3>Mahesh Vyas</h3>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-card">
+                    <img src="{{ url_for('static', filename='images/team2.jpg') }}" alt="Operations Manager">
+                    <h3>Varun Vyas</h3>
+                    <p>Operations Manager</p>
+                </div>
+                <div class="team-card">
+                    <img src="{{ url_for('static', filename='images/team3.jpg') }}" alt="Customer Support">
+                    <h3>Kartik Vyas</h3>
+                    <p>Customer Support Lead</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

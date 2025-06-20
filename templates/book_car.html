@@ -1,0 +1,55 @@
+{% extends "base.html" %} 
+
+{% block title %}Book Car{% endblock %}
+
+{% block content %}
+<section class="booking-section">
+    <h1 class="section-title">Book Your Car</h1>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if car %}
+    <div class="booking-card">
+        <h2>{{ car.car_name }}</h2>
+        <p><strong>Price Per Day:</strong> ₹{{ car.price_per_day }}</p>
+        <img src="{{ url_for('static', filename='images/cars/' + car.image_url) }}" alt="{{ car.car_name }}" class="car-image">
+    </div>
+    {% endif %}
+
+    <div class="booking-card">
+        <form method="POST" action="{{ url_for('book_car', car_id=car_id) }}" class="booking-form">
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" id="start_date" required>
+
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" id="end_date" required>
+
+            <button type="submit" class="book-btn">Confirm Booking</button>
+        </form>
+    </div>
+</section>
+
+<!-- Prevent Selecting Past Dates -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let today = new Date().toISOString().split("T")[0];
+        document.getElementById("start_date").setAttribute("min", today);
+        document.getElementById("end_date").setAttribute("min", today);
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Summary{% endblock %}
+
+{% block content %}
+<section class="payment-summary">
+    <h1 class="section-title">Payment Summary</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="payment-details">
+        <h2>{{ booking.car_name }}</h2>
+        <img src="{{ url_for('static', filename='images/cars/' + booking.image_url) }}" alt="{{ booking.car_name }}" class="car-image">
+
+        <p><strong>Rental Period:</strong> {{ booking.start_date }} to {{ booking.end_date }}</p>
+        <p><strong>Price Per Day:</strong> ₹{{ booking.price_per_day }}</p>
+        <p><strong>Total Price:</strong> ₹{{ booking.total_price }}</p>
+
+        <form method="POST" action="{{ url_for('confirm_payment', booking_id=booking.booking_id) }}">
+            <button type="submit" class="btn pay-btn">Proceed to Payment</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

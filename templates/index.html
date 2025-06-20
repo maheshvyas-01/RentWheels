@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="content">
+            <h1>Welcome to RentWheels</h1>
+            <p>Your perfect car rental service in India</p>
+            <a href="{{ url_for('car_listings') }}" class="btn explore-btn">Explore Cars</a>
+        </div>
+    </header>
+
+    <!-- Info Section with Cards Layout -->
+    <section class="admin-container">
+        <h1>Explore Our Services</h1>
+        <div class="admin-dashboard">
+            <!-- About Section -->
+            <div class="admin-card">
+                <h2>About Us</h2>
+                <p>RentWheels is India's top car rental service, offering premium cars at unbeatable prices.</p>
+                <a href="{{ url_for('about') }}" class="add-car-btn">Learn More</a>
+            </div>
+
+            <!-- Car Listings -->
+            <div class="admin-card">
+                <h2>Explore Our Cars</h2>
+                <p>Choose from a wide range of vehicles for your perfect journey.</p>
+                <a href="{{ url_for('car_listings') }}" class="add-car-btn">View Cars</a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="admin-card">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to the most common questions about our service.</p>
+                <a href="{{ url_for('faq') }}" class="add-car-btn">Read FAQs</a>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="admin-card">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for any inquiries.</p>
+                <a href="{{ url_for('contact') }}" class="add-car-btn">Contact Now</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

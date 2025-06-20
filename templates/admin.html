@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - RentWheels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">RentWheels</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('car_listings') }}">Car Listings</a></li>
+            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('admin_panel') }}" class="active">Admin Panel</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="{{ url_for('logout') }}" class="btn logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Admin Panel Container -->
+    <div class="admin-container">
+        <h1>Welcome to Admin Panel</h1>
+        <h3><p style="text-align: center; margin-bottom: 20px;">Manage RentWheels services from here.</p></h3>
+
+        <!-- Admin Dashboard Links -->
+        <div class="admin-dashboard">
+            <div class="admin-card">
+                <h2>Manage Cars</h2>
+                <p><a href="{{ url_for('manage_cars') }}" class="add-car-btn">Go</a></p>
+            </div>
+            <div class="admin-card">
+                <h2>Manage Users</h2>
+                <p><a href="{{ url_for('manage_users') }}" class="add-car-btn">Go</a></p>
+            </div>
+            <div class="admin-card">
+                <h2>View Bookings</h2>
+                <p><a href="{{ url_for('view_bookings') }}" class="add-car-btn">Go</a></p>
+            </div>
+            <div class="admin-card">
+                <h2>View Messages</h2>
+                <p><a href="{{ url_for('view_messages') }}" class="add-car-btn">Go</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made by <b>Mahesh Vyas</b></p>
+    </footer>
+</body>
+</html>

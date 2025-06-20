@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block content %}
+<section class="faq-section">
+    <h1 class="section-title">Frequently Asked Questions</h1>
+    <p class="faq-intro">Find answers to the most commonly asked questions about RentWheels.</p>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question">How do I rent a car? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="faq-answer">
+                <p>You can rent a car by browsing our listings, selecting your preferred car, and booking it through our platform. A confirmation will be provided upon successful booking.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What documents are required to rent a car? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="faq-answer">
+                <p>You'll need a valid driver's license, a government-issued ID, and a credit/debit card for payment.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Is there a security deposit? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="faq-answer">
+                <p>No, our platform does not require a security deposit. However, rental policies may vary based on the provider.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What is the cancellation policy? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="faq-answer">
+                <p>Bookings can be canceled up to 24 hours before the rental start time without any charges.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Do you offer long-term rentals? <i class="fa-solid fa-chevron-down"></i></button>
+            <div class="faq-answer">
+                <p>Yes, we offer both short-term and long-term rentals. Contact us for special rates on extended rentals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

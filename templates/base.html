@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentWheels - {% block title %}{% endblock %}</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- JavaScript -->
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- Font Awesome (For Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">RentWheels</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('car_listings') }}">Car Listings</a></li>
+            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+            <li><a href="{{ url_for('my_bookings') }}">My Bookings</a></li>
+            
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            
+            {% if session.get('is_admin') %}
+                <li><a href="{{ url_for('admin_panel') }}">Admin Panel</a></li>
+            {% endif %}
+        </ul>
+
+        <!-- Auth Buttons -->
+        <div class="auth-buttons">
+            {% if 'user_id' in session %}
+                <a href="{{ url_for('logout') }}" class="btn logout-btn">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn login-btn">Login</a>
+                <a href="{{ url_for('register') }}" class="btn register-btn">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made by <b>Mahesh Vyas</b></p>
+        <p>&copy; 2025 RentWheels. All rights reserved.</p>
+        <p>Email: support@rentwheels.com</p> 
+    </footer>    
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}My Bookings - RentWheels{% endblock %}
+
+{% block content %}
+<div class="bookings-container">
+    <h2 class="bookings-title">My Bookings</h2>
+    
+    {% if bookings %}
+        <table class="bookings-table">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Car Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Total Price (₹)</th>
+                    <th>Status</th>
+                    <th>Booked On</th>
+                    <th>Invoice</th>  <!-- New Column -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.booking_id }}</td>
+                    <td>{{ booking.car_name }}</td>
+                    <td>{{ booking.start_date }}</td>
+                    <td>{{ booking.end_date }}</td>
+                    <td>{{ booking.total_price }}</td>
+                    <td>
+                        {% if booking.status == 'Confirmed' %}
+                            <span class="status-badge status-confirmed">Confirmed</span>
+                        {% elif booking.status == 'Pending' %}
+                            <span class="status-badge status-pending">Pending</span>
+                        {% elif booking.status == 'Cancelled' %}
+                            <span class="status-badge status-cancelled">Cancelled</span>
+                        {% else %}
+                            <span class="status-badge">{{ booking.status }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ booking.created_at }}</td>
+                    <td>
+                        <a href="{{ url_for('download_invoice', booking_id=booking.booking_id) }}" class="btn-invoice">
+                            Download Invoice
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-center mt-4">You have no bookings yet.</p>
+    {% endif %}
+    
+    <div class="back-btn">
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
