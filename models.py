@@ -4,7 +4,7 @@ import pyodbc
 def get_db_connection():
     conn = pyodbc.connect(
         "DRIVER={SQL Server};"
-        "SERVER=MAHESH\\SQLEXPRESS;"
+        "SERVER=ABCDE\\SQLEXPRESS;"
         "DATABASE=RentWheels;"
         "Trusted_Connection=yes;"
     )
