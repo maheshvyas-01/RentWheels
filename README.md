@@ -34,7 +34,7 @@
 | 🎨 HTML5 / CSS3 | Web page design |
 | 🧠 JavaScript | Interactivity |
 | 🧩 Jinja2 | Template rendering |
-| 🖨️ PDFKit | Invoice generation |
+| 🖨️ REPORTLab | Invoice generation |
 | 🔗 PyODBC | Python to SQL connection |
 
 
