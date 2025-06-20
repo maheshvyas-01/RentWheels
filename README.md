@@ -87,9 +87,6 @@
 │── requirements.txt
 │── README.md   
 
-SCREENSHOTS:
-
-You can find all the screenshots of output in the "screenshots" folder, thank you:}
 
 🚀 How to Run the Project Locally
 
@@ -127,8 +124,9 @@ Open rentwheels_db.sql in SQL Server Management Studio
 Execute the SQL script to create tables and dummy data
 Ensure Trusted_Connection=yes if you're using Windows Authentication
 
-                                              SCREENSHOTS
+SCREENSHOTS:
 
+You can find all the screenshots of output in the "screenshots" folder, thank you:}
 
 
 📄 License
