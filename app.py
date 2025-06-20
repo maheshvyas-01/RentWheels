@@ -15,7 +15,7 @@ def get_db_connection():
     try:
         conn = pyodbc.connect(
             "DRIVER={SQL Server};"
-            "SERVER=MAHESH\\SQLEXPRESS;"  # Replace with your server name
+            "SERVER=ABCDE\\SQLEXPRESS;"  # Replace with your server name
             "DATABASE=RentWheels;"  # Replace with your database name
             "Trusted_Connection=yes;",
             autocommit=True
