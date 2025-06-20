@@ -139,9 +139,13 @@ Free to use, modify, and distribute with credit.
 🙋‍♂️ About the Developer
 
 👨‍💻 Mahesh Vyas
+
 🎓 First Year MCA Student
+
 💼 Passionate about Web Development, Python Full Stack
+
 📫 LinkedIn https://www.linkedin.com/in/vyasmahesh
+
 📧 vyasmahesh@gmail.com 
 
 ⭐ Support & Feedback
