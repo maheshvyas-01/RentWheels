@@ -1,5 +1,5 @@
-📂 RentWheels/
-│── 📂 templates/
+RentWheels/
+│──  templates/
 │   │── about.html
 │   │── add_car.html
 │   │── base.html
@@ -20,18 +20,18 @@
 │   │── view_bookings.html
 │   │── view_messages.html
 │
-│── 📂 static/
-│   │── 📂 images/
-│   │   │── 📂 cars/
+│── static/
+│   │── images/
+│   │   │── cars/
 │   │   |   │── (car images)
-│   │   │── 📂 invoices/
+│   │   │── invoices/
 │   │   |   │── (invoice pdfs)
-│   │── 📂 js/
+│   │── js/
 │   │   │── script.js
-│   │── 📂 css/
+│   │── css/
 |       |──style.css
 |
-│── 📂 _pycache_/
+│── _pycache_/
 │   │── app.cpython-39.pyc
 │   │── app_routes.cpython-39.pyc
 │   │── db_connection.cpython-39.pyc
