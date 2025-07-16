@@ -144,7 +144,7 @@ Free to use, modify, and distribute with credit.
 
 📫 LinkedIn https://www.linkedin.com/in/vyasmahesh
 
-📧 vyasmahesh@gmail.com 
+📧 vyasmahesh7878@gmail.com 
 
 ⭐ Support & Feedback
 If you like this project, consider giving it a ⭐ star on GitHub.
